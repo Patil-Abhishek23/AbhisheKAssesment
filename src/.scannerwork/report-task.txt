@@ -1,0 +1,6 @@
+projectKey=esttuate2
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=esttuate2
+ceTaskId=fd3bd80f-d93d-45b4-b254-88dd50fe2bd7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=fd3bd80f-d93d-45b4-b254-88dd50fe2bd7

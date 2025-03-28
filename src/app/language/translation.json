@@ -1,0 +1,29 @@
+{
+    "English": {
+      "dashboardOverview": "Dashboard Overview",
+      "archiveData": "Archive Data",
+      "archiveDescription": "View and manage archived records",
+      "analytics": "Analytics",
+      "analyticsDescription": "View system analytics and metrics",
+      "documents": "Documents",
+      "documentsDescription": "Manage your documents",
+      "overview": "Overview",
+      "overviewDescription": "System overview and status",
+      "featureComingSoon": "Feature Coming Soon",
+      "close": "Close"
+    },
+    "Spanish": {
+      "dashboardOverview": "Visión general del panel",
+      "archiveData": "Datos de archivo",
+      "archiveDescription": "Ver y administrar registros archivados",
+      "analytics": "Analítica",
+      "analyticsDescription": "Ver análisis y métricas del sistema",
+      "documents": "Documentos",
+      "documentsDescription": "Administra tus documentos",
+      "overview": "Visión general",
+      "overviewDescription": "Estado y descripción general del sistema",
+      "featureComingSoon": "Función próximamente",
+      "close": "Cerrar"
+    }
+  }
+  

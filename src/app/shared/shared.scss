@@ -1,0 +1,79 @@
+@use '@carbon/styles/scss/theme';
+@use '@carbon/colors';
+@use '@carbon/layout/scss/spacing';
+
+.tilesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Adjusted for better responsiveness
+  gap: var(--cds-grid-gutter, 16px);
+  padding: spacing.$spacing-05;
+}
+
+.tile {
+  background-color: var(--cds-layer);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: spacing.$spacing-06;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.tileContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: spacing.$spacing-04;
+  width: 100%;
+}
+
+// Align input and button horizontally
+.inputWithButton {
+  display: flex;
+  align-items: center;
+  gap: spacing.$spacing-08;
+  width: 100%;
+
+  input {
+    flex: 1;
+    min-width: 150px;
+  }
+}
+
+.dashboard {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: spacing.$spacing-06;
+  color: theme.$text-primary;
+}
+
+// Navigation Bar
+.bx--header {
+  background-color: theme.$background-inverse;
+  color: theme.$text-on-color;
+}
+
+.bx--header-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.bx--header-global-action {
+  color: theme.$text-on-color;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
