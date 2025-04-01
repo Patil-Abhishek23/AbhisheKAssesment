@@ -1,0 +1,13 @@
+{
+      "dashboardOverview": "Dashboard Overview",
+      "archiveData": "Archive Data",
+      "archiveDescription": "View and manage archived records",
+      "analytics": "Analytics",
+      "analyticsDescription": "View system analytics and metrics",
+      "documents": "Documents",
+      "documentsDescription": "Manage your documents",
+      "overview": "Overview",
+      "overviewDescription": "System overview and status",
+      "featureComingSoon": "Feature Coming Soon",
+      "close": "Close"
+    }

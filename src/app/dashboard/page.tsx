@@ -1,12 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import {
-  Tile,
   Grid,
   Column,
-  Modal,
   ClickableTile,
-  AspectRatio,
   Theme,
   Header,
   HeaderName,
@@ -24,17 +21,17 @@ import {
   Sun,
   Logout,
 } from '@carbon/icons-react';
-import translations from "../language/translation.json"; // Import translations
+import translations from "../language/translation.json"; 
+import './dashboard.scss'; // Import your CSS module
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [theme, setTheme] = useState<'g100' | 'white'>('g100'); // Default to dark theme
+  const [theme, setTheme] = useState<'g100' | 'white'>('g100'); 
   const [language, setLanguage] = useState<keyof typeof translations>('English');
-  const [texts, setTexts] = useState(translations[language]); // Set initial text based on language
+  const [texts, setTexts] = useState(translations[language]); 
 
   useEffect(() => {
-    setTexts(translations[language]); // Update text when language changes
+    setTexts(translations[language]); 
   }, [language]);
 
   const toggleTheme = () => {
@@ -42,7 +39,7 @@ export default function DashboardPage() {
   };
 
   const handleLogout = () => {
-    router.push('./'); // Redirect to login page
+    router.push('./'); 
   };
 
   const handleLanguageChange = ({ selectedItem }: { selectedItem: string }) => {
@@ -74,7 +71,7 @@ export default function DashboardPage() {
       title: texts.overview,
       description: texts.overviewDescription,
       icon: Dashboard,
-      action: () => setIsModalOpen(true),
+      action: () => router.push('/Forms'),
     },
   ];
 
@@ -117,27 +114,18 @@ export default function DashboardPage() {
           <div className="dashboardtilesGrid">
             {tiles.map((tile, index) => (
               <ClickableTile key={index} className="dashboardtile" onClick={tile.action}>
-                <AspectRatio ratio="1x1">
+                
                   <div className="dashtileContent">
                     <tile.icon size={32} />
                     <h3 className="cds--type-productive-heading-02">{tile.title}</h3>
                     <p className="cds--type-body-long-01">{tile.description}</p>
                   </div>
-                </AspectRatio>
+          
               </ClickableTile>
             ))}
           </div>
 
-          <Modal
-            open={isModalOpen}
-            modalHeading={texts.featureComingSoon}
-            primaryButtonText={texts.close}
-            onRequestClose={() => setIsModalOpen(false)}
-          >
-            <div className="dashmodalContent">
-              <p>{texts.featureComingSoon}</p>
-            </div>
-          </Modal>
+       
         </main>
       </div>
     </Theme>

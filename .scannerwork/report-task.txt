@@ -1,0 +1,6 @@
+projectKey=NextJSProject
+serverUrl=http://localhost:9000
+serverVersion=25.3.0.104237
+dashboardUrl=http://localhost:9000/dashboard?id=NextJSProject
+ceTaskId=1ff54fd2-d13f-42c8-a90f-ff9074c854b6
+ceTaskUrl=http://localhost:9000/api/ce/task?id=1ff54fd2-d13f-42c8-a90f-ff9074c854b6

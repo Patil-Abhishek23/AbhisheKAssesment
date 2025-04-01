@@ -1,21 +1,18 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Input from "@/src/sharedcomponents/textinput";
 import DropdownComponent from "@/src/sharedcomponents/dropdown";
 import {
   DropdownSkeleton,
+  Form,
   SkeletonText,
-  Header,
-  HeaderName,
-  HeaderGlobalBar,
-  HeaderGlobalAction,
   Theme
 } from "@carbon/react";
-import { Moon, Sun, Logout } from "@carbon/icons-react";
 import CustomButton from "@/src/sharedcomponents/button";
 import DataTableDisplay from "@/src/sharedcomponents/datatabledisplay";
 import { useRouter } from "next/navigation";
+import Navbar from "../navbar";
 
 export default function Home() {
   const router = useRouter();
@@ -23,6 +20,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [theme, setTheme] = useState<'g100' | 'white'>('g100'); // Dark theme default
+  const [language, setLanguage] = useState<"English" | "Spanish">("English");
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 200);
@@ -34,29 +32,18 @@ export default function Home() {
     e.preventDefault();
     console.log("Form submitted with:", text);
   };
-  const toggleTheme = () => setTheme(prev => (prev === 'g100' ? 'white' : 'g100'));
-  const handleLogout = () => router.push("./");
 
   return (
+    <>
     <Theme theme={theme}>
       <div className={`min-h-screen ${theme === 'g100' ? 'cds-theme-g100' : 'cds-theme-white'}`}>
-        {/* Navigation Bar */}
-        <Header aria-label="Intellispheere Navbar">
-          <HeaderName prefix="">Intellispheere</HeaderName>
-          <HeaderGlobalBar>
-            <HeaderGlobalAction aria-label="Toggle theme" onClick={toggleTheme}>
-              {theme === 'g100' ? <Sun size={20} /> : <Moon size={20} />}
-            </HeaderGlobalAction>
-            <HeaderGlobalAction aria-label="Logout" onClick={handleLogout}>
-              <Logout size={20} />
-            </HeaderGlobalAction>
-          </HeaderGlobalBar>
-        </Header>
+      
+        <Navbar theme={theme} setTheme={setTheme} language={language} setLanguage={setLanguage} />
 
         <br /><br />
         <div className="dashboard">Dashboard</div>
 
-        <form className="form" onSubmit={handleSubmit}>
+        <Form className="form" onSubmit={handleSubmit}>
           <div className="tilesGrid">
             <div className="tile">
               <div className="tileContent">
@@ -71,7 +58,7 @@ export default function Home() {
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
                       placeholder="Enter Text"
                     />
-                    <CustomButton id="submit-btn" label="Submit" />
+                    {/* <CustomButton id="submit-btn" label="Submit" /> */}
                   </div>
                 )}
               </div>
@@ -96,10 +83,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </form>
-
+        </Form>
         {selectedOption && <DataTableDisplay />}
       </div>
     </Theme>
-  );
-}
+    </>
+    );
+  }

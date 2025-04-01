@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import React, { useState } from "react";
 import Head from "next/head";
 import {
@@ -20,13 +21,9 @@ import {
   TableSelectRow,
   Modal,
   Theme,
-  Header,
-  HeaderName,
-  HeaderGlobalBar,
-  HeaderGlobalAction,
 } from "@carbon/react";
-
-import { Save, Sun, Moon, Logout } from "@carbon/icons-react";
+import { Save } from "@carbon/icons-react";
+import Navbar from '../navbar';
 
 
 const headers = [
@@ -42,7 +39,7 @@ const rows = [
   { name: "Load Balancer 4", id: "d", attached_groups: "Bob's VM Groups" },
   { name: "Load Balancer 5", id: "e", attached_groups: "Eve's VM Groups" },
   { name: "Load Balancer 6", id: "f", attached_groups: "David's VM Groups" },
-  { name: "Load Balancer 7", id: "g", attached_groups: "sams's VM Groups" },
+  { name: "Load Balancer 7", id: "g", attached_groups: "Sam's VM Groups" },
   { name: "Load Balancer 8", id: "h", attached_groups: "LG's VM Groups" },
   { name: "Load Balancer 9", id: "i", attached_groups: "Honda's VM Groups" },
   { name: "Load Balancer 10", id: "j", attached_groups: "Samsung's VM Groups" },
@@ -53,16 +50,7 @@ export default function DataTablePage() {
   const [selectedRows, setSelectedRows] = useState<
     { id: string; cells: { id: string; value: string }[] }[]
   >([]);
-  const [theme, setTheme] = useState<"g100" | "white" | "g10" | "g90">("g100");
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "g100" ? "white" : "g100"));
-  };
-
-  const handleLogout = () => {
-    // Handle logout logic here
-    console.log("Logout clicked");
-  };
+  const [theme, setTheme] = useState<"g100" | "white">("g100");
 
   return (
     <Theme theme={theme}>
@@ -72,26 +60,11 @@ export default function DataTablePage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Navigation Bar */}
-      <Header aria-label="Intellispheere Navbar">
-        <HeaderName prefix="">Intellisphere</HeaderName>
-        <HeaderGlobalBar>
-          <HeaderGlobalAction aria-label="Toggle theme" onClick={toggleTheme}>
-            {theme === "g100" ? <Sun size={20} /> : <Moon size={20} />}
-          </HeaderGlobalAction>
-          <HeaderGlobalAction
-            aria-label="Logout"
-            onClick={handleLogout}
-          >
-            <Logout size={20} />
-          </HeaderGlobalAction>
-        </HeaderGlobalBar>
-      </Header>
-      <br></br>
-      <br></br>
-      <br></br>
-    
-      <div>
+      <Navbar theme={theme} setTheme={setTheme} language={"English"} setLanguage={function (lang: "English" | "Spanish"): void {
+        throw new Error("Function not implemented.");
+      } } />
+
+      <div style={{ padding: "2rem" }}>
         <DataTable rows={rows} headers={headers} isSortable>
           {({
             rows,
@@ -120,7 +93,7 @@ export default function DataTablePage() {
                   </TableBatchActions>
                   <TableToolbarContent>
                     <TableToolbarSearch
-                      onChange={(event, value) =>
+                      onChange={(event) =>
                         onInputChange(event as React.ChangeEvent<HTMLInputElement>)
                       }
                     />
